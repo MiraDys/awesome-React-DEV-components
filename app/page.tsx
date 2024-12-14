@@ -1,16 +1,20 @@
+import ParallaxEffect from "./components/parallax-effect";
 import { TailwindIndicator } from "./components/tailwind-indicator";
 
 export default function Home() {
   return (
     <>
-      <div>
-        <div className="h-10 bg-blue-200 flex justify-center items-center">
-          <h1 className=" font-bold text-2xl">
-            Collection of Awesome React Components
+      <>
+          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-center font-bold text-5xl p-10">
+            Collection of Awesome 
+            <br />
+            React Components
           </h1>
-        </div>
+          <div className="flex justify-center">
+            <ParallaxEffect />
+          </div>
         <TailwindIndicator />
-      </div>
+      </>
     </>
   );
 }
