@@ -1,20 +1,19 @@
+import AnimatedSidebar from "./components/animated-sidebar";
 import ParallaxEffect from "./components/parallax-effect";
 import { TailwindIndicator } from "./components/tailwind-indicator";
+import Title from "./components/title";
 
 export default function Home() {
   return (
-    <>
-      <>
-          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-center font-bold text-5xl p-10">
-            Collection of Awesome 
-            <br />
-            React Components
-          </h1>
-          <div className="flex justify-center">
-            <ParallaxEffect />
-          </div>
-        <TailwindIndicator />
-      </>
-    </>
+    <div className="flex">
+      <AnimatedSidebar />
+      <div className="flex-1 flex justify-center">
+        <div id="content-container" className="flex flex-col items-center">
+          <Title />
+          <ParallaxEffect />
+        </div>
+      </div>
+      <TailwindIndicator />
+    </div>
   );
 }
