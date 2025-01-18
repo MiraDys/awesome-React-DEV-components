@@ -1,8 +1,13 @@
+import { motion } from "motion/react";
+
 export default function Logo() {
   // logo placeholder from https://logoipsum.com/
 
   return (
-    <div className="grid size-14 shrink-0 place-content-center rounded-md">
+    <motion.div
+      layout
+      className="grid size-14 shrink-0 place-content-center rounded-md"
+    >
       <svg
         id="logo-59"
         width="60"
@@ -125,6 +130,6 @@ export default function Logo() {
           strokeMiterlimit="10"
         ></path>
       </svg>
-    </div>
+    </motion.div>
   );
 }

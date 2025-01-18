@@ -8,6 +8,8 @@ import Logo from "./UI/sidebar/logo";
 import { MdAnimation } from "react-icons/md";
 import { MdHome } from "react-icons/md";
 
+import { motion } from "motion/react";
+
 interface Link {
   title: string;
   href: string;
@@ -41,7 +43,8 @@ export default function AnimatedSidebar() {
   const [selected, setSelected] = useState("Home");
 
   return (
-    <nav
+    <motion.nav
+      layout
       className="sticky top-0 h-screen shrink-0 border-r border-slate-300 bg-white p-2"
       style={{ width: open ? "225px" : "fit-content" }}
     >
@@ -59,7 +62,7 @@ export default function AnimatedSidebar() {
         ))}
       </div>
       <ToggleToClose open={open} setOpen={setOpen} />
-    </nav>
+    </motion.nav>
   );
 }
 
@@ -68,7 +71,17 @@ const TitleSection = ({ open }: { open: boolean }) => {
     <div className="mb-3 border-b border-slate-300 pb-3">
       <div className="flex cursor-pointer items-center gap-1 rounded-md transition-colors hover:bg-slate-100 p-2">
         <Logo />
-        {open && <h1 className="text-3xl font-semibold">Awesome</h1>}
+        {open && (
+          <motion.h1
+            layout
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.125 }}
+            className="text-3xl font-semibold"
+          >
+            Awesome
+          </motion.h1>
+        )}
       </div>
     </div>
   );
@@ -88,7 +101,8 @@ const LinksSection = ({
   icon: React.ReactNode;
 }) => {
   return (
-    <button
+    <motion.button
+      layout
       onClick={() => setSelected(title)}
       className={`relative flex h-10 w-full items-center rounded-md transition-colors ${
         selected === title
@@ -98,9 +112,19 @@ const LinksSection = ({
     >
       <div className="flex items-center gap-2">
         {icon}
-        {open && <h2 className="text-sm font-semibold">{title}</h2>}
+        {open && (
+          <motion.div
+            layout
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.125 }}
+            className="text-sm font-semibold"
+          >
+            {title}
+          </motion.div>
+        )}
       </div>
-    </button>
+    </motion.button>
   );
 };
 
